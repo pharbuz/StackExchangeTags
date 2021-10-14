@@ -1,0 +1,32 @@
+@model PageResult<StackExchangeTagList<StackExchangeTag>>
+
+@{
+    Layout = "_Layout";
+}
+
+<table class="table">
+    <thead>
+    <tr>
+        <th scope="col">Number</th>
+        <th scope="col">Name</th>
+        <th scope="col">Count</th>
+        <th scope="col">Percentage</th>
+    </tr>
+    </thead>
+    <tbody>
+        @{
+            int i = 1;
+            foreach (var tag in Model.Items.Items)
+            {
+                var percentage = string.Format("{0:P}", (((double) tag.Count) / ((double) ViewBag.NumberOfTags)));
+                <tr>
+                    <th>@i</th>
+                    <th>@tag.Name</th>
+                    <th>@tag.Count</th>
+                    <th>@percentage</th>
+                </tr>
+                i++;
+            }
+        }
+    </tbody>
+</table>
