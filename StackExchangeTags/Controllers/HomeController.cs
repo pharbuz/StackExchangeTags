@@ -36,6 +36,7 @@ namespace StackExchangeTags.Controllers
             return View();
         }
 
+        [ResponseCache(Duration = 600, Location = ResponseCacheLocation.Client, NoStore = true)]
         public async Task<IActionResult> TagList(int pageNumber, int pageSize, string sortDirection, string sortType,
             string site)
         {
